@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  postgres-db:
+    image: postgres:16-alpine
+    container_name: foodStorage_database
+    environment:
+      POSTGRES_USER: luffy
+      POSTGRES_PASSWORD: luffy
+      POSTGRES_DB: food
+    ports:
+      - "5432:5432"
+    volumes:
+      - foodstorage_pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  foodstorage_pgdata:
